@@ -1,0 +1,61 @@
+<template>
+    <require from="../../attributes/au-selectize"></require>
+    <require from="selectize/dist/css/selectize.default.css"></require>
+
+    <form if.bind="user" submit.trigger="saveUser()" class="form card">
+       <div class="card-block">
+           <h4 class="card-title">User Details <i class="fa fa-user"></i></h4>
+           <h6 class="card-subtitle mb-2 text-muted">
+               View / Edit user details
+           </h6>
+           <hr>
+           <div class="form-group">
+               <label for="name">Name</label>
+               <input type="text" readonly class="form-control" name="name" 
+                    value.bind="user.name">
+
+               <label for="first-name">First Name</label>
+               <input type="text" class="form-control" name="first-name" 
+                    placeholder="enter a first name" 
+                    value.bind="user.first_name">    
+
+                <label for="surname">Surname</label>
+               <input type="text" class="form-control" name="surname" 
+                    placeholder="enter a first name" 
+                    value.bind="user.surname">    
+
+               <label for="email">Email</label>
+               <input type="text" class="form-control" name="email" 
+                    placeholder="enter email" 
+                    value.bind="user.email">  
+
+                <label for="select-country">Country</label>
+                <div class="row no-gutter">
+                    <div class="col-md-3">
+                        <select id="select-country"
+                                if.bind="selected"
+                                au-selectize="url:countries;valueField:code;
+                                           labelField:name;searchField:name;
+                                           selected.bind:selected"
+                                class="demo-default"
+                                placeholder="Select user's country"
+                                change.delegate="countryChanged($event)">
+                                <option value.bind="selected.code">${selected.name}</option>
+
+                        </select>
+                    </div>
+                </div>
+           </div>
+       </div>
+
+       <div class="card-footer">
+           <a route-href="route: users" class="btn btn-secondary col-sm-2">
+               <i class="fa fa-arrow-left"></i> Back
+           </a>
+           <button class="btn btn-primary col-sm-2 push-sm-8"
+                    disabled.bind="user.name.length == 0">
+                    Save
+           </button>
+       </div>
+   </form>
+</template>

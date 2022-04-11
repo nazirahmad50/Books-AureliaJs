@@ -1,0 +1,26 @@
+<template>
+    <require from="./book-list"></require>
+    <require from="./heading.html"></require>
+    <require from="./book-stats"></require>
+
+    <heading text.bind="'Books'"></heading>
+    
+    <div class="card">
+      <div class="card-block">
+        <form class="form-inline" submit.trigger="addBook()">
+          <label for="book-title"></label>
+          <input class="form-control" type="text" id="book-title" value.bind="bookTitle" placeholder="book title...">
+          <input class="btn btn-success tap-right" type="submit" value="Add" disabled.one-way="canAdd">
+        </form>
+      </div>
+    </div>
+    <hr/>
+    <book-list if.bind="books.length > 0 && genres.length > 0 && shelves.length > 0" 
+        books.bind="books"
+        genres.bind="genres"
+        shelves.bind="shelves">
+
+    </book-list>  
+    <hr>
+    <book-stats if.bind="books.length > 0" books.bind="books" original-number-of-books.one-time="books.length"></book-stats>
+</template>
