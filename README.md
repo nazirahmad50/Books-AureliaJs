@@ -4,7 +4,9 @@ This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
 
 For more information, go to https://aurelia.io/docs/cli/cli-bundler
 
-## Run dev app
+## 1. Run Books-AureliaJs-Server: https://github.com/nazirahmad50/Books-AureliaJs-Server
+
+## 2. Run dev app
 
 Run `au run`, then open `http://localhost:9000`
 
